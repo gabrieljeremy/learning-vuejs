@@ -1,0 +1,42 @@
+<!-- On greffe la nouvelle vue sur l'id app -->
+<div id="app">
+
+    <!-- {{ data }} affiche la donnée demandées -->
+    <!-- v-bind:attr="data" affiche la donnée dans un attribut / raccourci : :attr / + '/page' pour chaîner la string -->
+    <a :href="link" :title="message">{{ message }}</a>
+
+    <ul>
+        <!-- v-for="data in datas" affiche les données via une boucle -->
+        <li v-for="person in persons">{{ person }}</li>
+    </ul>
+
+    <!-- v-model="data" lie la valeur de l'input à la donnée -->
+    <input type="text" v-model="message">
+    <!-- <input type="checkbox" v-model="success"> -->
+
+    <!-- On lie le model à la donnée cls et on attribue une valeur si oui ou non elle est cochée -->
+    <input type="checkbox" v-model="cls" :true-value="'success'" :false-value="'error'" >
+
+    <!-- v-if="data" affiche le div si la donnée est true -->
+    <!-- v-show="data" met en display none si la donnée est false -->
+    <!-- <div v-if="success"> -->
+
+    <!-- :class peut contenu une fonction ternaire pour définir deux class possibles -->
+    <!-- <div :class="success ? 'success' : 'error'"> -->
+
+    <!-- Ou directement un objet ou envoyer une méthode -->
+    <div :class="{success: success, error: !success }" :style="style()">
+
+    <!-- On lui lie la classe cls qui va changer avec la valeur de la checkbox-->
+    <div :class="cls">
+        <p>Bravo : votre enregistrement a marché</p>
+        <!-- v-on:click="method" lance une méthode au clic / raccourci : @click="method" -->
+        <i class="close icon" @click="close"></i>
+    </div>
+
+    <!-- v-else affiche l'autre div si la donnée est false -->
+    <div v-else>
+        <p>Echec : vous avez mal rempli votre enregistrement</p>
+    </div>
+
+</div>

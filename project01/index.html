@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css">
+    <style>
+        .main.container {
+            padding-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <!-- <a v-bind:href="link + '/apropos'">{{ message }}</a> -->
+    <div class="ui inverted fixed menu">
+        <div class="header-item">Tutoriel</div>
+    </div>
+    <div class="ui main container" id="app">
         <a :href="link" :title="message">{{ message }}</a>
-        <div class="success" v-show="success"> <!-- v-show="success" : en display none -->
-            <p>Bravo votre enregistrement a marché</p>
+        <ul>
+            <li v-for="person in persons">{{ person }}</li>
+        </ul>
+        <input type="text" v-model="message">
+        <input type="checkbox" v-model="cls" :true-value="'success'" :false-value="'error'" >
+        <div class="ui message" :class="cls">
+            <i class="close icon" @click="close"></i>
+            <p> {{ message }}</p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
